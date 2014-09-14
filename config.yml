@@ -1,0 +1,12 @@
+file:
+  name: _posts/{{ message.date }}-{{ message.subject }}.md
+  content: |
+    ---
+    layout: post
+    ---
+    {{ message.body }}
+git:
+  commit:
+    email: mail2git@cplug.org
+    name: mail2git
+  remote: origin
