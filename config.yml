@@ -6,7 +6,8 @@ file:
     ---
     {{ message.body }}
 git:
+  repo: test.git
+  remote: origin
   commit:
     email: mail2git@cplug.org
     name: mail2git
-  remote: origin
