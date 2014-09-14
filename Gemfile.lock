@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    liquid (2.6.1)
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
+    mime-types (2.3)
+    rugged (0.21.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  liquid (~> 2.6.1)
+  mail (~> 2.6.1)
+  rugged (~> 0.21.0)
