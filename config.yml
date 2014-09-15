@@ -1,13 +1,14 @@
 file:
-  name: _posts/{{ message.date }}-{{ message.subject }}.md
+  path: '_posts/{{ date | date: "%F" }}-{{ slug }}.md'
   content: |
     ---
     layout: post
+    title: {{ subject }}
     ---
-    {{ message.body }}
+    {{ body }}
 git:
   repo: test.git
   remote: origin
-  commit:
-    email: mail2git@cplug.org
-    name: mail2git
+  email: mail2git@cplug.org
+  name: mail2git
+  message: 'post "{{ subject }}"'
