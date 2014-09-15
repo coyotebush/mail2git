@@ -7,12 +7,15 @@ config = YAML.load_file('config.yml')
 
 mail = Mail.read_from_string(STDIN.read)
 
+from_addr = mail.from[0]
+from_name = mail['from'].display_names[0] if mail['from']
+from_name = from_addr if from_name.nil? or from_name.strip.empty?
 params = {
   'subject' => mail.subject,
   'slug' => mail.subject.downcase.gsub(/\W+/, ' ').strip.tr(' ', '-'),
   'date' => mail.date,
   'body' => mail.body.to_s,
-  'from' => mail.from
+  'from' => from_name
 }
 path_template    = Liquid::Template.parse(config['file']['path'])
 content_template = Liquid::Template.parse(config['file']['content'])
@@ -31,8 +34,8 @@ Rugged::Commit.create(repo, {
   tree: index.write_tree(repo),
   message: message,
   author: {
-    email: mail.from[0],
-    name: mail.from[0],
+    email: from_addr,
+    name: from_name,
     time: mail.date.to_time
   },
   committer: {
