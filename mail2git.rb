@@ -43,3 +43,6 @@ Rugged::Commit.create(repo, {
   parents: [ repo.head.target ].compact,
   update_ref: 'HEAD'
 })
+
+remote = repo.remotes[config['git']['remote']]
+remote.push([ repo.head.name ]) if remote
