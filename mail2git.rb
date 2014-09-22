@@ -1,9 +1,10 @@
+#!/usr/bin/env ruby
 require 'liquid'
 require 'mail'
 require 'rugged'
 require 'yaml'
 
-config = YAML.load_file('config.yml')
+config = YAML.load_file(File.dirname(__FILE__) + '/config.yml')
 
 mail = Mail.read_from_string(STDIN.read)
 
